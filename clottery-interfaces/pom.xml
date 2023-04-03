@@ -67,7 +67,7 @@
             <version>3.0.12</version>
         </dependency>
 
-        <!-- 依赖 clottery-infrastructure 、clottery-rpc-->
+        <!-- 依赖 clottery-infrastructure 、clottery-rpc、clottery-domain-->
         <dependency>
             <groupId>cn.cactusli.clottery</groupId>
             <artifactId>clottery-infrastructure</artifactId>
@@ -76,6 +76,11 @@
         <dependency>
             <groupId>cn.cactusli.clottery</groupId>
             <artifactId>clottery-rpc</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.cactusli.clottery</groupId>
+            <artifactId>clottery-domain</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

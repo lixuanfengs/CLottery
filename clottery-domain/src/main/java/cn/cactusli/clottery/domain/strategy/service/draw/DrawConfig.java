@@ -1,5 +1,6 @@
 package cn.cactusli.clottery.domain.strategy.service.draw;
 
+import cn.cactusli.clottery.common.Constants;
 import cn.cactusli.clottery.domain.strategy.service.algorithm.IDrawAlgorithm;
 
 import javax.annotation.PostConstruct;
@@ -11,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * ClassName: DrawConfig
  * Package: cn.cactusli.clottery.domain.strategy.service.draw
  * Description:
- *
+ *  抽奖统一配置信息类
  * @Author 仙人球⁶ᴳ
  * @Create 2023/3/31 14:43
  * @Version 1.0
@@ -19,19 +20,19 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class DrawConfig {
 
-
     @Resource
-    private IDrawAlgorithm defaultRateRandomDrawAlgorithm;
+    private IDrawAlgorithm entiretyRateRandomDrawAlgorithm;
 
     @Resource
     private IDrawAlgorithm singleRateRandomDrawAlgorithm;
 
-    protected static Map<Integer, IDrawAlgorithm> drawAlgorithmMap = new ConcurrentHashMap<>();
+    /** 抽奖策略组 */
+    protected static Map<Integer, IDrawAlgorithm> drawAlgorithmGroup = new ConcurrentHashMap<>();
 
     @PostConstruct
     public void init() {
-        drawAlgorithmMap.put(1, defaultRateRandomDrawAlgorithm);
-        drawAlgorithmMap.put(2, singleRateRandomDrawAlgorithm);
+        drawAlgorithmGroup.put(Constants.StrategyMode.ENTIRETY.getCode(), entiretyRateRandomDrawAlgorithm);
+        drawAlgorithmGroup.put(Constants.StrategyMode.SINGLE.getCode(), singleRateRandomDrawAlgorithm);
     }
 
 

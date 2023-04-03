@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +19,8 @@ import java.util.List;
  * @Version 1.0
  * @Github https://github.com/lixuanfengs
  */
-@Component("DefaultRateRandomDrawAlgorithm")
-public class DefaultRateRandomDrawAlgorithm extends BaseAlgorithm {
+@Component("entiretyRateRandomDrawAlgorithm")
+public class EntiretyRateRandomDrawAlgorithm extends BaseAlgorithm {
 
 
     @Override
@@ -42,12 +41,15 @@ public class DefaultRateRandomDrawAlgorithm extends BaseAlgorithm {
         }
 
         // 前置判断
-        if (differenceAwardRateList.size() == 0) return "";
-        if (differenceAwardRateList.size() == 1) return differenceAwardRateList.get(0).getAwardId();
+        if (differenceAwardRateList.size() == 0) {
+            return "";
+        }
+        if (differenceAwardRateList.size() == 1) {
+            return differenceAwardRateList.get(0).getAwardId();
+        }
 
         // 获取随机概率值
-        SecureRandom secureRandom = new SecureRandom();
-        int randomVal = secureRandom.nextInt(100) + 1;
+        int randomVal = this.generateSecureRandomIntCode(100);
 
         // 循环获取奖品
         String awardId = "";
