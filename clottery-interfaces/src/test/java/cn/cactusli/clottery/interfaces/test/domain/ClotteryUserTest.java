@@ -1,4 +1,4 @@
-package cn.cactusli.clottery.interfaces.test;
+package cn.cactusli.clottery.interfaces.test.domain;
 
 import cn.cactusli.clottery.common.Constants;
 import cn.cactusli.clottery.domain.award.model.req.GoodsReq;
@@ -7,14 +7,12 @@ import cn.cactusli.clottery.domain.award.service.factory.DistributionGoodsFactor
 import cn.cactusli.clottery.domain.award.service.goods.IDistributionGoods;
 import cn.cactusli.clottery.domain.strategy.model.req.DrawReq;
 import cn.cactusli.clottery.domain.strategy.model.res.DrawResult;
-import cn.cactusli.clottery.domain.strategy.model.vo.AwardRateInfo;
 import cn.cactusli.clottery.domain.strategy.model.vo.DrawAwardInfo;
 import cn.cactusli.clottery.domain.strategy.service.algorithm.IDrawAlgorithm;
 import cn.cactusli.clottery.domain.strategy.service.draw.IDrawExec;
 import cn.cactusli.clottery.infrastructure.dao.IActivityDao;
 import cn.cactusli.clottery.infrastructure.dao.IStrategyDetailDao;
 import cn.cactusli.clottery.infrastructure.po.Activity;
-import cn.cactusli.clottery.infrastructure.po.StrategyDetail;
 import com.alibaba.fastjson.JSON;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -23,8 +21,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * ClassName: ClotteryUser

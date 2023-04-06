@@ -1,9 +1,8 @@
 package cn.cactusli.clottery.domain.strategy.service.draw;
 
 import cn.cactusli.clottery.domain.strategy.model.aggregates.StrategyRich;
+import cn.cactusli.clottery.domain.strategy.model.vo.AwardBriefVO;
 import cn.cactusli.clottery.domain.strategy.repository.IStrategyRepository;
-import cn.cactusli.clottery.infrastructure.po.Award;
-
 import javax.annotation.Resource;
 
 /**
@@ -36,7 +35,7 @@ public class DrawStrategySupport extends DrawConfig {
      * @param awardId
      * @return
      */
-    protected Award queryAwardInfoByAwardId(String awardId) {
+    protected AwardBriefVO queryAwardInfoByAwardId(String awardId) {
         return strategyRepository.queryAwardInfo(awardId);
     }
 }

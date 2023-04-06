@@ -14,6 +14,13 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
+    <insert id="insert" parameterType="cn.cactusli.clottery.infrastructure.po.Strategy">
+        INSERT INTO strategy(strategy_id, strategy_desc, strategy_mode, grant_type,
+        grant_date, ext_info, create_time, update_time)
+        VALUES(#{strategyId}, #{strategyDesc}, #{strategyMode}, #{grantType},
+        #{grantDate}, #{extInfo}, NOW(), NOW())
+    </insert>
+
     <select id="queryStrategy" parameterType="java.lang.Long" resultMap="strategyMap">
         SELECT
         id, strategy_id, strategy_desc, strategy_mode, grant_type,

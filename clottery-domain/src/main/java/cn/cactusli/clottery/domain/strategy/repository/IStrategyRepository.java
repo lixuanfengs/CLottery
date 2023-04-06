@@ -1,7 +1,7 @@
 package cn.cactusli.clottery.domain.strategy.repository;
 
 import cn.cactusli.clottery.domain.strategy.model.aggregates.StrategyRich;
-import cn.cactusli.clottery.infrastructure.po.Award;
+import cn.cactusli.clottery.domain.strategy.model.vo.AwardBriefVO;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public interface IStrategyRepository {
 
     StrategyRich queryStrategyRich(Long strategyId);
 
-    Award queryAwardInfo(String awardId);
+    AwardBriefVO queryAwardInfo(String awardId);
 
     List<String> queryNoStockStrategyAwardList(Long strategyId);
 

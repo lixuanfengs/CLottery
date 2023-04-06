@@ -1,8 +1,8 @@
 package cn.cactusli.clottery.domain.strategy.model.aggregates;
 
 
-import cn.cactusli.clottery.infrastructure.po.Strategy;
-import cn.cactusli.clottery.infrastructure.po.StrategyDetail;
+import cn.cactusli.clottery.domain.strategy.model.vo.StrategyBriefVO;
+import cn.cactusli.clottery.domain.strategy.model.vo.StrategyDetailBriefVO;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import java.util.List;
  * ClassName: StrategyRich
  * Package: cn.cactusli.clottery.domain.strategy.model.aggregates
  * Description:
+ *  抽奖策略聚合对象
  *
  * @Author 仙人球⁶ᴳ
  * @Create 2023/3/31 10:50
@@ -18,42 +19,52 @@ import java.util.List;
  */
 public class StrategyRich {
 
+    /**
+     * 策略ID
+     */
     private Long strategyId;
 
-    private Strategy strategy;
+    /**
+     * 策略配置
+     */
+    private StrategyBriefVO strategy;
 
-    private List<StrategyDetail> strategyDetailList;
+    /**
+     * 策略明细
+     */
+    private List<StrategyDetailBriefVO> strategyDetailList;
 
     public StrategyRich() {
     }
 
-    public StrategyRich(Long strategyId, Strategy strategy, List<StrategyDetail> strategyDetailList) {
+    public StrategyRich(Long strategyId, StrategyBriefVO strategy, List<StrategyDetailBriefVO> strategyDetailList) {
         this.strategyId = strategyId;
         this.strategy = strategy;
         this.strategyDetailList = strategyDetailList;
-    }
-
-    public void setStrategy(Strategy strategy) {
-        this.strategy = strategy;
-    }
-
-    public void setStrategyDetailList(List<StrategyDetail> strategyDetailList) {
-        this.strategyDetailList = strategyDetailList;
-    }
-
-    public void setStrategyId(Long strategyId) {
-        this.strategyId = strategyId;
-    }
-
-    public List<StrategyDetail> getStrategyDetailList() {
-        return strategyDetailList;
     }
 
     public Long getStrategyId() {
         return strategyId;
     }
 
-    public Strategy getStrategy() {
+    public void setStrategyId(Long strategyId) {
+        this.strategyId = strategyId;
+    }
+
+    public StrategyBriefVO getStrategy() {
         return strategy;
     }
+
+    public void setStrategy(StrategyBriefVO strategy) {
+        this.strategy = strategy;
+    }
+
+    public List<StrategyDetailBriefVO> getStrategyDetailList() {
+        return strategyDetailList;
+    }
+
+    public void setStrategyDetailList(List<StrategyDetailBriefVO> strategyDetailList) {
+        this.strategyDetailList = strategyDetailList;
+    }
+
 }
