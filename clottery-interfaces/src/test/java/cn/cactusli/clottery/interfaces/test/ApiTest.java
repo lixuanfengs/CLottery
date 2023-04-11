@@ -1,8 +1,5 @@
 package cn.cactusli.clottery.interfaces.test;
 
-import cn.cactusli.clottery.infrastructure.dao.IActivityDao;
-import cn.cactusli.clottery.infrastructure.po.Activity;
-import com.alibaba.fastjson.JSON;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -130,8 +127,18 @@ public class ApiTest {
             System.out.println(random.nextInt(1));
         }
 
-
     }
+
+    @Test
+    public void test_idx1() {
+        int hashCode = 0;
+        for (int i = 0; i < 16; i++) {
+            hashCode = i * 0x61c88647 + 0x61c88647;
+            int idx = hashCode & 15;
+            System.out.println("斐波那契散列：" + idx + " 普通散列：" + (String.valueOf(i).hashCode() & 15));
+        }
+    }
+
 
 
 }
