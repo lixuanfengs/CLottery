@@ -1,9 +1,13 @@
 package cn.cactusli.clottery.domain.activity.service.partake;
 
+import cn.cactusli.clottery.domain.activity.model.req.PartakeReq;
+import cn.cactusli.clottery.domain.activity.model.res.PartakeResult;
+
 /**
  * ClassName: IActivityPartake
  * Package: cn.cactusli.clottery.domain.activity.service.partake
  * Description:
+ *  抽奖活动参与接口
  *
  * @Author 仙人球⁶ᴳ
  * @Create 2023/4/4 16:47
@@ -13,8 +17,10 @@ package cn.cactusli.clottery.domain.activity.service.partake;
 public interface IActivityPartake {
 
     /**
-     * TODO：待开发活动参与接口
+     * 参与活动
+     * @param req 入参
+     * @return    领取结果
      */
-    void doPartake();
+    PartakeResult doPartake(PartakeReq req);
 
 }

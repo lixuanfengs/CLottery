@@ -3,11 +3,14 @@ package cn.cactusli.clottery.interfaces.test.domain;
 import cn.cactusli.clottery.common.Constants;
 import cn.cactusli.clottery.domain.activity.model.aggregates.ActivityConfigRich;
 import cn.cactusli.clottery.domain.activity.model.req.ActivityConfigReq;
+import cn.cactusli.clottery.domain.activity.model.req.PartakeReq;
+import cn.cactusli.clottery.domain.activity.model.res.PartakeResult;
 import cn.cactusli.clottery.domain.activity.model.vo.ActivityVO;
 import cn.cactusli.clottery.domain.activity.model.vo.AwardVO;
 import cn.cactusli.clottery.domain.activity.model.vo.StrategyDetailVO;
 import cn.cactusli.clottery.domain.activity.model.vo.StrategyVO;
 import cn.cactusli.clottery.domain.activity.service.deploy.IActivityDeploy;
+import cn.cactusli.clottery.domain.activity.service.partake.IActivityPartake;
 import cn.cactusli.clottery.domain.activity.service.stateflow.IStateHandler;
 import com.alibaba.fastjson.JSON;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,6 +48,10 @@ public class ActivityTest {
     @Resource
     private IStateHandler stateHandler;
 
+    @Resource
+    private IActivityPartake activityPartake;
+
+
     private ActivityConfigRich activityConfigRich;
 
 
@@ -55,8 +62,6 @@ public class ActivityTest {
 
     @BeforeEach
     public void init() {
-
-        System.out.println("asdasdasd");
 
         ActivityVO activity = new ActivityVO();
         activity.setActivityId(activityId);
@@ -136,25 +141,25 @@ public class ActivityTest {
         award_02.setAwardId("102");
         award_02.setAwardType(Constants.AwardType.DESC.getCode());
         award_02.setAwardName("手机");
-        award_02.setAwardContent("请联系活动组织者 fustack");
+        award_02.setAwardContent("请联系活动组织者 cactusli");
 
         AwardVO award_03 = new AwardVO();
         award_03.setAwardId("103");
         award_03.setAwardType(Constants.AwardType.DESC.getCode());
         award_03.setAwardName("平板");
-        award_03.setAwardContent("请联系活动组织者 fustack");
+        award_03.setAwardContent("请联系活动组织者 cactusli");
 
         AwardVO award_04 = new AwardVO();
         award_04.setAwardId("104");
         award_04.setAwardType(Constants.AwardType.DESC.getCode());
         award_04.setAwardName("耳机");
-        award_04.setAwardContent("请联系活动组织者 fustack");
+        award_04.setAwardContent("请联系活动组织者 cactusli");
 
         AwardVO award_05 = new AwardVO();
         award_05.setAwardId("105");
         award_05.setAwardType(Constants.AwardType.DESC.getCode());
         award_05.setAwardName("数据线");
-        award_05.setAwardContent("请联系活动组织者 fustack");
+        award_05.setAwardContent("请联系活动组织者 cactusli");
 
         List<AwardVO> awardList = new ArrayList<>();
         awardList.add(award_01);
@@ -179,4 +184,11 @@ public class ActivityTest {
         logger.info("二次提审，测试：{}", JSON.toJSONString(stateHandler.checkPass(activityId, Constants.ActivityState.EDIT)));
     }
 
+    @Test
+    public void test_activityPartake() {
+        PartakeReq req = new PartakeReq("Ukdli109op89oi", 100001L);
+        PartakeResult res = activityPartake.doPartake(req);
+        logger.info("请求参数：{}", JSON.toJSONString(req));
+        logger.info("测试结果：{}", JSON.toJSONString(res));
+    }
 }
