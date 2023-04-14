@@ -11,12 +11,20 @@ package cn.cactusli.clottery.domain.strategy.model.req;
  * @Github https://github.com/lixuanfengs
  */
 public class DrawReq {
-
-    // 用户ID
+    /**
+     * 用户ID
+     */
     private String uId;
 
-    // 策略ID
+    /**
+     * 策略ID
+     */
     private Long strategyId;
+
+    /**
+     * 防重ID
+     */
+    private String uuid;
 
     public DrawReq() {
     }
@@ -24,6 +32,12 @@ public class DrawReq {
     public DrawReq(String uId, Long strategyId) {
         this.uId = uId;
         this.strategyId = strategyId;
+    }
+
+    public DrawReq(String uId, Long strategyId, String uuid) {
+        this.uId = uId;
+        this.strategyId = strategyId;
+        this.uuid = uuid;
     }
 
     public String getuId() {
@@ -41,4 +55,11 @@ public class DrawReq {
     public void setStrategyId(Long strategyId) {
         this.strategyId = strategyId;
     }
-}
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }}

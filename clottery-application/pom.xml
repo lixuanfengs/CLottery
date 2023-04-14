@@ -11,5 +11,13 @@
 
     <artifactId>clottery-application</artifactId>
 
+    <dependencies>
+        <!-- 业务包 -->
+        <dependency>
+            <groupId>cn.cactusli.clottery</groupId>
+            <artifactId>clottery-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

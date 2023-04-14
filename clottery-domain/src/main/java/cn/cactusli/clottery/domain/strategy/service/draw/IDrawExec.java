@@ -8,6 +8,7 @@ import cn.cactusli.clottery.domain.strategy.model.res.DrawResult;
  * Package: cn.cactusli.clottery.domain.strategy.service.draw
  * Description:
  *  抽奖执行接口
+ *
  * @Author 仙人球⁶ᴳ
  * @Create 2023/3/31 14:42
  * @Version 1.0

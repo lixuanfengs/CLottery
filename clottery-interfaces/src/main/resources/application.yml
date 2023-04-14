@@ -30,6 +30,11 @@ mybatis:
   mapper-locations: classpath:/mybatis/mapper/*.xml
   config-location:  classpath:/mybatis/config/mybatis-config.xml
 
+# 允许打印 debug 日子
+logging:
+  level:
+    cn.cactusli.middleware.db.router: DEBUG
+
 # Dubbo 广播方式配置
 dubbo:
   application:
@@ -42,3 +47,4 @@ dubbo:
     port: 20880
   scan:
     base-packages: cn.cactusli.clottery.rpc
+

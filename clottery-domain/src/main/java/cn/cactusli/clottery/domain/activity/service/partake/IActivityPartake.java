@@ -1,7 +1,9 @@
 package cn.cactusli.clottery.domain.activity.service.partake;
 
+import cn.cactusli.clottery.common.Result;
 import cn.cactusli.clottery.domain.activity.model.req.PartakeReq;
 import cn.cactusli.clottery.domain.activity.model.res.PartakeResult;
+import cn.cactusli.clottery.domain.activity.model.vo.DrawOrderVO;
 
 /**
  * ClassName: IActivityPartake
@@ -22,5 +24,14 @@ public interface IActivityPartake {
      * @return    领取结果
      */
     PartakeResult doPartake(PartakeReq req);
+
+
+    /**
+     * 保存奖品单
+     * @param drawOrder 奖品单
+     * @return          保存结果
+     */
+    Result recordDrawOrder(DrawOrderVO drawOrder);
+
 
 }
