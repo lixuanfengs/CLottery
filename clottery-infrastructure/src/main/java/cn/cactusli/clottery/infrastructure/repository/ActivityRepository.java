@@ -24,7 +24,7 @@ import java.util.List;
  * @Version 1.0
  * @Github https://github.com/lixuanfengs
  */
-@Component
+@Resource
 public class ActivityRepository implements IActivityRepository {
     @Resource
     private IActivityDao activityDao;

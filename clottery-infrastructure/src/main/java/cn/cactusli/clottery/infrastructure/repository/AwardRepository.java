@@ -2,6 +2,7 @@ package cn.cactusli.clottery.infrastructure.repository;
 
 import cn.cactusli.clottery.domain.award.repository.IAwardRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  * ClassName: AwardRepository
@@ -14,6 +15,6 @@ import org.springframework.stereotype.Component;
  * @Version 1.0
  * @Github https://github.com/lixuanfengs
  */
-@Component
+@Repository
 public class AwardRepository implements IAwardRepository {
 }

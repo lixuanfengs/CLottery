@@ -1,8 +1,14 @@
 package cn.cactusli.clottery.interfaces.test.application;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,6 +25,9 @@ import java.util.Date;
  * @Github https://github.com/lixuanfengs
  */
 public class TreadLocalTest {
+
+    private Logger logger = LoggerFactory.getLogger(TreadLocalTest.class);
+
 
     // 线程不安全
     private static SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -92,5 +101,46 @@ public class TreadLocalTest {
             System.out.println("objectThreadLocal：" + threadLocalHashCode.get(objectThreadLocal));
         }
     }
+
+
+
+
+    @Test
+    public void outPutExcel() throws IOException {
+        for (int i = 7; i >0 ; i-- ) {
+            Document doc;
+            if(i == 7) {
+                doc = Jsoup.connect("https://ecsf.ac.cn/rcjs/rcdw/fyjy.htm").get();
+            } else {
+                doc = Jsoup.connect("https://ecsf.ac.cn/rcjs/rcdw/fyjy/"+i+".htm").get();
+            }
+            //logger.info(doc.title());
+            Elements newsHeadlines = doc.select(".ReserList ul");
+            for (Element headline : newsHeadlines) {
+                Elements lis = headline.select("li a");
+                String li_a = "";
+                for (Element li : lis) {
+                    if (li_a.equals(li.attr("href"))) {
+                        continue;
+                    }
+                    li_a = li.attr("href");
+
+                    StringBuilder  str = new StringBuilder();
+                    String href = li.attr("href").replace("../../", "https://ecsf.ac.cn/");
+                    href = href.replace("../", "");
+                    Document doc2 = Jsoup.connect(href).get();
+                    Elements trLines = doc2.select(".SinglePageInfoTable tr");
+                    for (Element trLine : trLines) {
+                        Elements tdLines = trLine.select("td");
+                        for (Element tdLine : tdLines) {
+                            str.append(tdLine.text()+ " ");
+                        }
+                    }
+                    System.out.println(str);
+                }
+            }
+        }
+    }
+
 
 }

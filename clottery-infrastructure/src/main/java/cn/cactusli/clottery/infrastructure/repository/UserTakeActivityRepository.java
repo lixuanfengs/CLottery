@@ -11,6 +11,7 @@ import cn.cactusli.clottery.infrastructure.po.UserStrategyExport;
 import cn.cactusli.clottery.infrastructure.po.UserTakeActivity;
 import cn.cactusli.clottery.infrastructure.po.UserTakeActivityCount;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -26,7 +27,7 @@ import java.util.Date;
  * @Version 1.0
  * @Github https://github.com/lixuanfengs
  */
-@Component
+@Repository
 public class UserTakeActivityRepository implements IUserTakeActivityRepository {
 
     @Resource
