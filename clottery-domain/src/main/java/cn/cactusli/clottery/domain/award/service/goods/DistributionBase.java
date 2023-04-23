@@ -1,6 +1,6 @@
 package cn.cactusli.clottery.domain.award.service.goods;
 
-import cn.cactusli.clottery.domain.award.repository.IAwardRepository;
+import cn.cactusli.clottery.domain.award.repository.IOrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +22,7 @@ public class DistributionBase {
     protected Logger logger = LoggerFactory.getLogger(DistributionBase.class);
 
     @Resource
-    private IAwardRepository awardRepository;
+    private IOrderRepository orderRepository;
 
     protected void updateUserAwardState(String uId, String orderId, String awardId, Integer awardState, String awardStateInfo) {
         // TODO 后期添加更新分库分表中，用户个人的抽奖记录表中奖品发奖状态

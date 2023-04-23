@@ -7,7 +7,7 @@ import cn.cactusli.clottery.domain.activity.repository.IActivityRepository;
 import cn.cactusli.clottery.infrastructure.dao.*;
 import cn.cactusli.clottery.infrastructure.po.*;
 import org.springframework.beans.BeanUtils;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import java.util.List;
  * @Version 1.0
  * @Github https://github.com/lixuanfengs
  */
-@Resource
+@Repository
 public class ActivityRepository implements IActivityRepository {
     @Resource
     private IActivityDao activityDao;
