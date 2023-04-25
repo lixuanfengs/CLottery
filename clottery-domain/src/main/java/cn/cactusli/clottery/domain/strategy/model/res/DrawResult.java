@@ -1,7 +1,7 @@
 package cn.cactusli.clottery.domain.strategy.model.res;
 
 import cn.cactusli.clottery.common.Constants;
-import cn.cactusli.clottery.domain.strategy.model.vo.DrawAwardInfo;
+import cn.cactusli.clottery.domain.strategy.model.vo.DrawAwardVO;
 
 /**
  * ClassName: DrawResult
@@ -33,7 +33,7 @@ public class DrawResult {
     /**
      * 中奖奖品信息
      */
-    private DrawAwardInfo drawAwardInfo;
+    private DrawAwardVO drawAwardVO;
 
     public DrawResult() {
     }
@@ -44,11 +44,11 @@ public class DrawResult {
         this.drawState = drawState;
     }
 
-    public DrawResult(String uId, Long strategyId, Integer drawState, DrawAwardInfo drawAwardInfo) {
+    public DrawResult(String uId, Long strategyId, Integer drawState, DrawAwardVO drawAwardVO) {
         this.uId = uId;
         this.strategyId = strategyId;
         this.drawState = drawState;
-        this.drawAwardInfo = drawAwardInfo;
+        this.drawAwardVO = drawAwardVO;
     }
 
     public String getuId() {
@@ -75,12 +75,12 @@ public class DrawResult {
         this.drawState = drawState;
     }
 
-    public DrawAwardInfo getDrawAwardInfo() {
-        return drawAwardInfo;
+    public DrawAwardVO getDrawAwardInfo() {
+        return drawAwardVO;
     }
 
-    public void setDrawAwardInfo(DrawAwardInfo drawAwardInfo) {
-        this.drawAwardInfo = drawAwardInfo;
+    public void setDrawAwardInfo(DrawAwardVO drawAwardVO) {
+        this.drawAwardVO = drawAwardVO;
     }
 
 }

@@ -64,7 +64,7 @@ public class ActivityTest {
     public void init() {
 
         ActivityVO activity = new ActivityVO();
-        activity.setActivityId(activityId);
+        activity.setActivityId(100003L);
         activity.setActivityName("测试活动");
         activity.setActivityDesc("测试活动描述");
         activity.setBeginDateTime(new Date());
@@ -135,7 +135,7 @@ public class ActivityTest {
         award_01.setAwardId("101");
         award_01.setAwardType(Constants.AwardType.DESC.getCode());
         award_01.setAwardName("电脑");
-        award_01.setAwardContent("请联系活动组织者 fustack");
+        award_01.setAwardContent("请联系活动组织者 cactusli");
 
         AwardVO award_02 = new AwardVO();
         award_02.setAwardId("102");

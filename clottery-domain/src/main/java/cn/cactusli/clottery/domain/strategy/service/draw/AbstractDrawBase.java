@@ -73,15 +73,11 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
      */
     private void checkAndInitRateData(Long strategyId, Integer strategyMode, List<StrategyDetailBriefVO> strategyDetailList) {
 
-        // 非单项概率，不必存入缓存
-        if (!Constants.StrategyMode.SINGLE.getCode().equals(strategyMode)) {
-            return;
-        }
-
+        // 根据抽奖策略模式，获取对应的抽奖服务
         IDrawAlgorithm drawAlgorithm = drawAlgorithmGroup.get(strategyMode);
 
-        // 已初始化过的数据，不必重复初始化
-        if (drawAlgorithm.isExistRateTuple(strategyId)) {
+        // 判断已处理过的的数据
+        if (drawAlgorithm.isExist(strategyId)) {
             return;
         }
 
@@ -91,7 +87,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
             awardRateInfoList.add(new AwardRateInfo(strategyDetail.getAwardId(), strategyDetail.getAwardRate()));
         }
 
-        drawAlgorithm.initRateTuple(strategyId, awardRateInfoList);
+        drawAlgorithm.initRateTuple(strategyId, strategyMode, awardRateInfoList);
     }
 
     /**
@@ -107,14 +103,13 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
             logger.info("执行策略抽奖完成【未中奖】，用户：{} 策略ID：{}", uId, strategyId);
             return new DrawResult(uId, strategyId, Constants.DrawState.FAIL.getCode());
         }
-
         AwardBriefVO award = super.queryAwardInfoByAwardId(awardId);
-        DrawAwardInfo drawAwardInfo = new DrawAwardInfo(award.getAwardId(), award.getAwardType(), award.getAwardName(), award.getAwardContent());
-        drawAwardInfo.setStrategyMode(strategyBriefVO.getStrategyMode());
-        drawAwardInfo.setGrantType(strategyBriefVO.getGrantType());
-        drawAwardInfo.setGrantDate(strategyBriefVO.getGrantDate());
+        DrawAwardVO drawAwardVO = new DrawAwardVO(uId, award.getAwardId(), award.getAwardType(), award.getAwardName(), award.getAwardContent());
+        drawAwardVO.setStrategyMode(strategyBriefVO.getStrategyMode());
+        drawAwardVO.setGrantType(strategyBriefVO.getGrantType());
+        drawAwardVO.setGrantDate(strategyBriefVO.getGrantDate());
         logger.info("执行策略抽奖完成【已中奖】，用户：{} 策略ID：{} 奖品ID：{} 奖品名称：{}", uId, strategyId, awardId, award.getAwardName());
 
-        return new DrawResult(uId, strategyId, Constants.DrawState.SUCCESS.getCode(), drawAwardInfo);
+        return new DrawResult(uId, strategyId, Constants.DrawState.SUCCESS.getCode(), drawAwardVO);
     }
 }

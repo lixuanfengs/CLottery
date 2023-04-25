@@ -81,6 +81,22 @@
                 <artifactId>hutool-all</artifactId>
                 <version>5.8.16</version>
             </dependency>
+
+            <!-- MapStruct begin -->
+            <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>1.5.4.Final</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>1.5.4.Final</version>
+            </dependency>
+            <!-- MapStruct end -->
+
             <dependency>
                 <groupId>cn.cactusli.middleware</groupId>
                 <artifactId>db-router-spring-boot-starter</artifactId>

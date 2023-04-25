@@ -1,4 +1,4 @@
-package cn.cactusli.clottery.interfaces;
+package cn.cactusli.clottery.interfaces.facade;
 
 import cn.cactusli.clottery.common.Constants;
 import cn.cactusli.clottery.common.Result;
