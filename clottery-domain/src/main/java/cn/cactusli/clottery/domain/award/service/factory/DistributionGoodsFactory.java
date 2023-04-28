@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @Github https://github.com/lixuanfengs
  */
 @Service
-public class DistributionGoodsFactory extends GoodsConfig{
+public class DistributionGoodsFactory extends GoodsConfig {
 
     public IDistributionGoods getDistributionGoodsService(Integer awardType){
         return goodsMap.get(awardType);

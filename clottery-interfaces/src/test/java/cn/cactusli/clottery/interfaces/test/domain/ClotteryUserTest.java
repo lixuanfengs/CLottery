@@ -83,7 +83,7 @@ public class ClotteryUserTest {
 
         // 封装发奖参数，orderId：2109313442431 为模拟ID，需要在用户参与领奖活动时生成
         DrawAwardVO drawAwardVO = drawResult.getDrawAwardInfo();
-        GoodsReq goodsReq = new GoodsReq(drawResult.getuId(), "2109313442431", drawAwardVO.getAwardId(), drawAwardVO.getAwardName(), drawAwardVO.getAwardContent());
+        GoodsReq goodsReq = new GoodsReq(drawResult.getuId(), 2109313442431L, drawAwardVO.getAwardId(), drawAwardVO.getAwardName(), drawAwardVO.getAwardContent());
 
         // 根据 awardType 从抽奖工厂中获取对应的发奖服务
         IDistributionGoods distributionGoodsService = distributionGoodsFactory.getDistributionGoodsService(drawAwardVO.getAwardType());

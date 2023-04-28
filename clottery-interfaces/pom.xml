@@ -49,6 +49,12 @@
         </dependency>
         <!-- MapStruct end -->
 
+
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
         <!-- 依赖 clottery-infrastructure 、clottery-rpc、clottery-domain-->
         <dependency>
             <groupId>cn.cactusli.clottery</groupId>

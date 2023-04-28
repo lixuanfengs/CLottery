@@ -8,8 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Field;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -142,5 +143,84 @@ public class TreadLocalTest {
         }
     }
 
+
+    @Test
+    public void outPutImages()  {
+        for (int i = 1; i <= 2 ; i ++ ) {
+            Document  doc = null;
+            try {
+
+                doc = Jsoup.connect("http://coas.ouc.edu.cn/js_8875/list" + i + ".htm").get();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            // 输出文件的本地路径
+            Elements newsHeadlines = doc.select(".wp_article_list_table");
+            for (Element headline : newsHeadlines) {
+                Elements selectTd = headline.select("tbody").select("tr").select("td");
+                for (Element td : selectTd) {
+                    String title = td.select("a").attr("title");
+                    String srcFilePath =  "http://coas.ouc.edu.cn" + td.select("img").attr("src");
+                    System.out.println("姓名：" + title + " 头像地址：" + srcFilePath);
+                    String destFilePath = "D:\\Wps_work\\image_l\\" + title + ".jpg";
+                    BufferedInputStream bis = null;
+                    BufferedOutputStream bos = null;
+                    try {
+                        URL url = new URL(srcFilePath);
+                        bis = new BufferedInputStream(url.openStream());
+                        bos = new BufferedOutputStream(new FileOutputStream(destFilePath));
+
+                        //循环的读取文件，并写入到 destFilePath
+                        byte[] buff = new byte[1024];
+                        int readLen = 0;
+                        //当返回 -1 时，就表示文件读取完毕
+                        while ((readLen = bis.read(buff)) != -1) {
+                            bos.write(buff, 0, readLen);
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        // 关闭流
+                        try {
+                            bos.close();
+                            bis.close();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    @Test
+    public void outPutImages1()  {
+        for (int i = 1; i <= 2 ; i ++ ) {
+            Document  doc = null;
+            try {
+                doc = Jsoup.connect("http://pol.ouc.edu.cn/dsdw/list.htm").get();
+            // 输出文件的本地路径
+            Elements newsHeadlines = doc.select(".wp_editor_art_table");
+            for (Element headline : newsHeadlines) {
+                Elements selectTd = headline.select("tbody").select("tr").select("td");
+                for (Element td : selectTd) {
+                    String href = td.select("a").attr("href");
+                    if ("" == href) {
+                        continue;
+                    } else {
+                        Document doc2 = Jsoup.connect(href).get();
+                        String attr = doc2.select("simpleArticleAttri").attr("img");
+                        System.out.println(attr);
+                    }
+                }
+            }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 
 }
