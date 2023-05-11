@@ -58,7 +58,6 @@ spring:
         min-idle: 0
       shutdown-timeout: 1000
 
-
 # xxl-job
 # 官网：https://github.com/xuxueli/xxl-job/
 # 地址：http://localhost:8084/xxl-job-admin 【需要先启动 xxl-job】
