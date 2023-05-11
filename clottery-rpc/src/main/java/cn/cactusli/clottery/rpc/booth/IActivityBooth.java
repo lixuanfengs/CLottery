@@ -1,7 +1,7 @@
-package cn.cactusli.clottery.rpc;
+package cn.cactusli.clottery.rpc.booth;
 
-import cn.cactusli.clottery.rpc.req.ActivityReq;
-import cn.cactusli.clottery.rpc.res.ActivityRes;
+import cn.cactusli.clottery.rpc.booth.req.ActivityReq;
+import cn.cactusli.clottery.rpc.booth.res.ActivityRes;
 
 /**
  * ClassName: IActivityBooth

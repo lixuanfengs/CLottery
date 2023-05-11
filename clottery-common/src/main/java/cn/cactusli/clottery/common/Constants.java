@@ -20,7 +20,10 @@ public class Constants {
         INDEX_DUP("0003","主键冲突"),
         NO_UPDATE("0004","SQL操作无更新"),
         LOSING_DRAW("D001", "未中奖"),
-        RULE_ERR("D002", "量化人群规则执行失败");
+        RULE_ERR("D002", "量化人群规则执行失败"),
+        NOT_CONSUMED_TAKE("D003", "未消费活动领取记录"),
+        OUT_OF_STOCK("D004", "活动无库存"),
+        ERR_TOKEN("D005", "分布式锁失败");
 
         private String code;
         private String info;
@@ -72,6 +75,27 @@ public class Constants {
         public void setInfo(String info) {
             this.info = info;
         }
+    }
+
+    /**
+     * 缓存 Key
+     */
+    public static final class RedisKey {
+
+        // 抽奖活动库存 Key
+        private static final String CLOTTERY_ACTIVITY_STOCK_COUNT = "clottery_activity_stock_count_";
+
+        public static String KEY_CLOTTERY_ACTIVITY_STOCK_COUNT(Long activityId) {
+            return CLOTTERY_ACTIVITY_STOCK_COUNT + activityId;
+        }
+
+        // 抽奖活动库存锁 Key
+        private static final String CLOTTERY_ACTIVITY_STOCK_COUNT_TOKEN = "clottery_activity_stock_count_token_";
+
+        public static String KEY_CLOTTERY_ACTIVITY_STOCK_COUNT_TOKEN(Long activityId, Integer stockUsedCount) {
+            return CLOTTERY_ACTIVITY_STOCK_COUNT_TOKEN + activityId + "_" + stockUsedCount;
+        }
+
     }
 
     /**

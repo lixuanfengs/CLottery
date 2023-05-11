@@ -1,8 +1,8 @@
-package cn.cactusli.clottery.rpc;
+package cn.cactusli.clottery.rpc.booth;
 
-import cn.cactusli.clottery.rpc.req.DrawReq;
-import cn.cactusli.clottery.rpc.req.QuantificationDrawReq;
-import cn.cactusli.clottery.rpc.res.DrawRes;
+import cn.cactusli.clottery.rpc.booth.req.DrawReq;
+import cn.cactusli.clottery.rpc.booth.req.QuantificationDrawReq;
+import cn.cactusli.clottery.rpc.booth.res.DrawRes;
 
 /**
  * Package: cn.cactusli.clottery.rpc
@@ -13,7 +13,7 @@ import cn.cactusli.clottery.rpc.res.DrawRes;
  * @Date 2023/4/24 10:29
  * @Github https://github.com/lixuanfengs
  */
-public interface ILotteryActivityBooth {
+public interface ICLotteryActivityBooth {
 
     /**
      * 指定活动抽奖

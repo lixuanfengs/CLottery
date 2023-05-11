@@ -1,7 +1,9 @@
 package cn.cactusli.clottery.domain.activity.service.deploy.impl;
 
 import cn.cactusli.clottery.domain.activity.model.aggregates.ActivityConfigRich;
+import cn.cactusli.clottery.domain.activity.model.aggregates.ActivityInfoLimitPageRich;
 import cn.cactusli.clottery.domain.activity.model.req.ActivityConfigReq;
+import cn.cactusli.clottery.domain.activity.model.req.ActivityInfoLimitPageReq;
 import cn.cactusli.clottery.domain.activity.model.vo.ActivityVO;
 import cn.cactusli.clottery.domain.activity.model.vo.AwardVO;
 import cn.cactusli.clottery.domain.activity.model.vo.StrategyDetailVO;
@@ -72,4 +74,8 @@ public class ActivityDeployImpl implements IActivityDeploy {
         return activityRepository.scanToDoActivityList(id);
     }
 
+    @Override
+    public ActivityInfoLimitPageRich queryActivityInfoLimitPage(ActivityInfoLimitPageReq req) {
+        return activityRepository.queryActivityInfoLimitPage(req);
+    }
 }

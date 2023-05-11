@@ -1,18 +1,19 @@
-package cn.cactusli.clottery.infrastructure.po;
+package cn.cactusli.clottery.rpc.deploy.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- * ClassName: Activity
- * Package: cn.cactusli.clottery.infrastructure.po
+ * Package: cn.cactusli.clottery.rpc.deploy.dto
  * Description:
- *  活动基础信息表
- * @Author 仙人球⁶ᴳ
- * @Create 2023/3/29 14:21
- * @Version 1.0
+ *  活动信息
+ *
+ * @Author 仙人球⁶ᴳ | 微信：Cactusesli
+ * @Date 2023/5/8 9:46
  * @Github https://github.com/lixuanfengs
  */
-public class Activity {
+public class ActivityDTO implements Serializable {
+
 
     /**
      * 自增ID
@@ -194,5 +195,25 @@ public class Activity {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "ActivityDTO{" +
+                "id=" + id +
+                ", activityId=" + activityId +
+                ", activityName='" + activityName + '\'' +
+                ", activityDesc='" + activityDesc + '\'' +
+                ", beginDateTime=" + beginDateTime +
+                ", endDateTime=" + endDateTime +
+                ", stockCount=" + stockCount +
+                ", stockSurplusCount=" + stockSurplusCount +
+                ", takeCount=" + takeCount +
+                ", strategyId=" + strategyId +
+                ", state=" + state +
+                ", creator='" + creator + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

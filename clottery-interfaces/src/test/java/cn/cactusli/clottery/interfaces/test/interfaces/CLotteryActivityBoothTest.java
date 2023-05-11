@@ -1,9 +1,9 @@
 package cn.cactusli.clottery.interfaces.test.interfaces;
 
-import cn.cactusli.clottery.rpc.ILotteryActivityBooth;
-import cn.cactusli.clottery.rpc.req.DrawReq;
-import cn.cactusli.clottery.rpc.req.QuantificationDrawReq;
-import cn.cactusli.clottery.rpc.res.DrawRes;
+import cn.cactusli.clottery.rpc.booth.ICLotteryActivityBooth;
+import cn.cactusli.clottery.rpc.booth.req.DrawReq;
+import cn.cactusli.clottery.rpc.booth.req.QuantificationDrawReq;
+import cn.cactusli.clottery.rpc.booth.res.DrawRes;
 import com.alibaba.fastjson.JSON;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -27,7 +27,7 @@ public class CLotteryActivityBoothTest {
     private Logger logger = LoggerFactory.getLogger(CLotteryActivityBoothTest.class);
 
     @Resource
-    private ILotteryActivityBooth lotteryActivityBooth;
+    private ICLotteryActivityBooth lotteryActivityBooth;
 
     @Test
     public void test_doDraw() {

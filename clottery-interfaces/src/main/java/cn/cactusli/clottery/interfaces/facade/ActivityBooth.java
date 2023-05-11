@@ -4,10 +4,10 @@ import cn.cactusli.clottery.common.Constants;
 import cn.cactusli.clottery.common.Result;
 import cn.cactusli.clottery.infrastructure.dao.IActivityDao;
 import cn.cactusli.clottery.infrastructure.po.Activity;
-import cn.cactusli.clottery.rpc.IActivityBooth;
-import cn.cactusli.clottery.rpc.dto.ActivityDto;
-import cn.cactusli.clottery.rpc.req.ActivityReq;
-import cn.cactusli.clottery.rpc.res.ActivityRes;
+import cn.cactusli.clottery.rpc.booth.IActivityBooth;
+import cn.cactusli.clottery.rpc.booth.dto.ActivityDto;
+import cn.cactusli.clottery.rpc.booth.req.ActivityReq;
+import cn.cactusli.clottery.rpc.booth.res.ActivityRes;
 import org.apache.dubbo.config.annotation.DubboService;
 
 import javax.annotation.Resource;

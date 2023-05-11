@@ -1,8 +1,8 @@
 package cn.cactusli.clottery.interfaces.test.application;
 
-import cn.cactusli.clottery.application.process.IActivityProcess;
-import cn.cactusli.clottery.application.process.req.DrawProcessReq;
-import cn.cactusli.clottery.application.process.res.DrawProcessResult;
+import cn.cactusli.clottery.application.process.draw.IActivityDrawProcess;
+import cn.cactusli.clottery.application.process.draw.req.DrawProcessReq;
+import cn.cactusli.clottery.application.process.draw.res.DrawProcessResult;
 import com.alibaba.fastjson.JSON;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -27,13 +27,13 @@ public class ActivityProcessTest {
     private Logger logger = LoggerFactory.getLogger(ActivityProcessTest.class);
 
     @Resource
-    private IActivityProcess activityProcess;
+    private IActivityDrawProcess activityProcess;
 
     @Test
     public void test_doDrawProcess() {
         DrawProcessReq req = new DrawProcessReq();
         req.setuId("cactusli");
-        req.setActivityId(100001L);
+        req.setActivityId(100003L);
         DrawProcessResult drawProcessResult = activityProcess.doDrawProcess(req);
 
         logger.info("请求入参：{}", JSON.toJSONString(req));

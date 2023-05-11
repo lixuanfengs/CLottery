@@ -1,4 +1,4 @@
-package cn.cactusli.clottery.application.process.req;
+package cn.cactusli.clottery.application.process.draw.req;
 
 /**
  * ClassName: DrawProcessReq

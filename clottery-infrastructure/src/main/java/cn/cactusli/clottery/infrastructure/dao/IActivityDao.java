@@ -1,5 +1,6 @@
 package cn.cactusli.clottery.infrastructure.dao;
 
+import cn.cactusli.clottery.domain.activity.model.req.ActivityInfoLimitPageReq;
 import cn.cactusli.clottery.domain.activity.model.vo.AlterStateVO;
 import cn.cactusli.clottery.infrastructure.po.Activity;
 import org.apache.ibatis.annotations.Mapper;
@@ -56,4 +57,27 @@ public interface IActivityDao {
      * @return 待处理的活动集合
      */
     List<Activity> scanToDoActivityList(Long id);
+
+    /**
+     * 更新用户领取活动后，活动库存
+     *
+     * @param activity  入参
+     */
+    void updateActivityStock(Activity activity);
+
+    /**
+     * 查询活动分页数据数量
+     *
+     * @param req 入参
+     * @return    结果
+     */
+    Long queryActivityInfoCount(ActivityInfoLimitPageReq req);
+
+    /**
+     * 查询活动分页数据列表
+     *
+     * @param req   入参
+     * @return      结果
+     */
+    List<Activity> queryActivityInfoList(ActivityInfoLimitPageReq req);
 }

@@ -1,7 +1,7 @@
-package cn.cactusli.clottery.rpc.res;
+package cn.cactusli.clottery.rpc.booth.res;
 
 import cn.cactusli.clottery.common.Result;
-import cn.cactusli.clottery.rpc.dto.ActivityDto;
+import cn.cactusli.clottery.rpc.booth.dto.ActivityDto;
 
 import java.io.Serializable;
 

@@ -1,7 +1,7 @@
 package cn.cactusli.clottery.interfaces.assembler;
 
 import cn.cactusli.clottery.domain.strategy.model.vo.DrawAwardVO;
-import cn.cactusli.clottery.rpc.dto.AwardDTO;
+import cn.cactusli.clottery.rpc.booth.dto.AwardDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;

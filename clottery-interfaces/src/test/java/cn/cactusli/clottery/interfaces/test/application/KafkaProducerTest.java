@@ -1,9 +1,9 @@
 package cn.cactusli.clottery.interfaces.test.application;
 
 import cn.cactusli.clottery.application.mq.producer.KafkaProducer;
-import cn.cactusli.clottery.application.process.IActivityProcess;
-import cn.cactusli.clottery.application.process.req.DrawProcessReq;
-import cn.cactusli.clottery.application.process.res.DrawProcessResult;
+import cn.cactusli.clottery.application.process.draw.IActivityDrawProcess;
+import cn.cactusli.clottery.application.process.draw.req.DrawProcessReq;
+import cn.cactusli.clottery.application.process.draw.res.DrawProcessResult;
 import cn.cactusli.clottery.common.Constants;
 import cn.cactusli.clottery.domain.activity.model.vo.InvoiceVO;
 import com.alibaba.fastjson2.JSON;
@@ -32,7 +32,7 @@ public class KafkaProducerTest {
     private KafkaProducer kafkaProducer;
 
     @Resource
-    private IActivityProcess activityProcess;
+    private IActivityDrawProcess activityProcess;
 
     @Test
     public void test_send() throws InterruptedException {

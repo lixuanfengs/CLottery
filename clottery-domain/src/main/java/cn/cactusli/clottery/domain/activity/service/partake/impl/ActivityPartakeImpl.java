@@ -3,10 +3,8 @@ package cn.cactusli.clottery.domain.activity.service.partake.impl;
 import cn.cactusli.clottery.common.Constants;
 import cn.cactusli.clottery.common.Result;
 import cn.cactusli.clottery.domain.activity.model.req.PartakeReq;
-import cn.cactusli.clottery.domain.activity.model.vo.ActivityBillVO;
-import cn.cactusli.clottery.domain.activity.model.vo.DrawOrderVO;
-import cn.cactusli.clottery.domain.activity.model.vo.InvoiceVO;
-import cn.cactusli.clottery.domain.activity.model.vo.UserTakeActivityVO;
+import cn.cactusli.clottery.domain.activity.model.res.StockResult;
+import cn.cactusli.clottery.domain.activity.model.vo.*;
 import cn.cactusli.clottery.domain.activity.repository.IUserTakeActivityRepository;
 import cn.cactusli.clottery.domain.activity.service.partake.BaseActivityPartake;
 import cn.cactusli.clottery.domain.support.ids.IIdGenerator;
@@ -125,6 +123,17 @@ public class ActivityPartakeImpl extends BaseActivityPartake {
     }
 
     @Override
+    protected StockResult subtractionActivityStockByRedis(String uId, Long activityId, Integer stockCount) {
+        return activityRepository.subtractionActivityStockByRedis(uId, activityId, stockCount);
+    }
+
+    @Override
+    protected void recoverActivityCacheStockByRedis(Long activityId, String tokenKey, String code) {
+        activityRepository.recoverActivityCacheStockByRedis(activityId, tokenKey, code);
+
+    }
+
+    @Override
     public Result recordDrawOrder(DrawOrderVO drawOrder) {
         try {
             dbRouter.doRouter(drawOrder.getuId());
@@ -169,5 +178,10 @@ public class ActivityPartakeImpl extends BaseActivityPartake {
         } finally {
             dbRouter.clear();
         }
+    }
+
+    @Override
+    public void updateActivityStock(ActivityPartakeRecordVO activityPartakeRecordVO) {
+        userTakeActivityRepository.updateActivityStock(activityPartakeRecordVO);
     }
 }

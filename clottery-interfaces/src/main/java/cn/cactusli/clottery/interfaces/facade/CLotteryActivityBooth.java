@@ -1,22 +1,23 @@
 package cn.cactusli.clottery.interfaces.facade;
 
-import cn.cactusli.clottery.application.process.IActivityProcess;
-import cn.cactusli.clottery.application.process.req.DrawProcessReq;
-import cn.cactusli.clottery.application.process.res.DrawProcessResult;
-import cn.cactusli.clottery.application.process.res.RuleQuantificationCrowdResult;
+import cn.cactusli.clottery.application.process.draw.IActivityDrawProcess;
+import cn.cactusli.clottery.application.process.draw.req.DrawProcessReq;
+import cn.cactusli.clottery.application.process.draw.res.DrawProcessResult;
+import cn.cactusli.clottery.application.process.draw.res.RuleQuantificationCrowdResult;
 import cn.cactusli.clottery.common.Constants;
 import cn.cactusli.clottery.domain.rule.model.req.DecisionMatterReq;
 import cn.cactusli.clottery.domain.strategy.model.vo.DrawAwardVO;
 import cn.cactusli.clottery.interfaces.assembler.IMapping;
-import cn.cactusli.clottery.rpc.ILotteryActivityBooth;
-import cn.cactusli.clottery.rpc.dto.AwardDTO;
-import cn.cactusli.clottery.rpc.req.DrawReq;
-import cn.cactusli.clottery.rpc.req.QuantificationDrawReq;
-import cn.cactusli.clottery.rpc.res.DrawRes;
+import cn.cactusli.clottery.rpc.booth.ICLotteryActivityBooth;
+import cn.cactusli.clottery.rpc.booth.dto.AwardDTO;
+import cn.cactusli.clottery.rpc.booth.req.DrawReq;
+import cn.cactusli.clottery.rpc.booth.req.QuantificationDrawReq;
+import cn.cactusli.clottery.rpc.booth.res.DrawRes;
 import com.alibaba.fastjson.JSON;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
@@ -29,13 +30,13 @@ import javax.annotation.Resource;
  * @Date 2023/4/24 10:31
  * @Github https://github.com/lixuanfengs
  */
-@Controller
-public class CLotteryActivityBooth implements ILotteryActivityBooth {
+@DubboService
+public class CLotteryActivityBooth implements ICLotteryActivityBooth {
 
     private Logger logger = LoggerFactory.getLogger(CLotteryActivityBooth.class);
 
     @Resource
-    private IActivityProcess activityProcess;
+    private IActivityDrawProcess activityProcess;
 
     @Resource
     private IMapping<DrawAwardVO, AwardDTO> awardMapping;

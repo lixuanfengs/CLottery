@@ -1,4 +1,4 @@
-package cn.cactusli.clottery.application.process.res;
+package cn.cactusli.clottery.application.process.draw.res;
 
 import cn.cactusli.clottery.common.Result;
 import cn.cactusli.clottery.domain.strategy.model.vo.DrawAwardVO;

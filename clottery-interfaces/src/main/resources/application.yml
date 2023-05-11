@@ -39,6 +39,26 @@ spring:
       ack-mode: manual_immediate
       missing-topics-fatal: false
 
+  # Redis 云服务器搭建后配置并重启 【否则会 Unable to connect to 39.96.*.*:6379】
+  # 防火墙放行：firewall-cmd --zone=public --add-port=6379/tcp --permanent
+  # 防火墙重启：firewall-cmd --reload
+  # redis.conf 注释掉 bind 127.0.0.1
+  # redis.conf protected-mode yes 改为 protected-mode no
+  redis:
+    database: 0
+    host: 192.168.1.107      # Redis服务器地址，修改为你的地址
+    port: 6380              # Redis服务器连接端口
+    password: 'Nstr.@#$808'          # Redis服务器连接密码（默认为空）
+    timeout: 3000           # Redis服务器链接超时配置
+    lettuce:
+      pool:
+        max-active: 100
+        max-wait: 1000
+        max-idle: 20
+        min-idle: 0
+      shutdown-timeout: 1000
+
+
 # xxl-job
 # 官网：https://github.com/xuxueli/xxl-job/
 # 地址：http://localhost:8084/xxl-job-admin 【需要先启动 xxl-job】
@@ -92,17 +112,25 @@ mybatis:
 logging:
   level:
     cn.cactusli.middleware.db.router: INFO
+    org.apache.kafka.clients.consumer.ConsumerConfig: off
+
+# 设置nacos的地址（配置中心）
+nacos:
+  discovery:
+    server-addr: 192.168.1.10:8848
 
 # Dubbo 广播方式配置
 dubbo:
   application:
-    name: Lottery
+    name: CLottery
     version: 1.0.0
   registry:
-    address: N/A #multicast://224.5.6.7:1234
-  protocol:
+    #    address: N/A
+    #    address: #multicast://224.5.6.7:1234
+    #    address: zookeeper://127.0.0.1:2181
+    address: nacos://192.168.1.10:8848
     name: dubbo
-    port: 20880
+    port: -1
   scan:
-    base-packages: cn.cactusli.clottery.rpc
+    base-packages: cn.cactusli.clottery.rpc.*
 

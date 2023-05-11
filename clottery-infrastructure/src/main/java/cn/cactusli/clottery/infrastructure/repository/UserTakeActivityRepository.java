@@ -1,13 +1,16 @@
 package cn.cactusli.clottery.infrastructure.repository;
 
 import cn.cactusli.clottery.common.Constants;
+import cn.cactusli.clottery.domain.activity.model.vo.ActivityPartakeRecordVO;
 import cn.cactusli.clottery.domain.activity.model.vo.DrawOrderVO;
 import cn.cactusli.clottery.domain.activity.model.vo.InvoiceVO;
 import cn.cactusli.clottery.domain.activity.model.vo.UserTakeActivityVO;
 import cn.cactusli.clottery.domain.activity.repository.IUserTakeActivityRepository;
+import cn.cactusli.clottery.infrastructure.dao.IActivityDao;
 import cn.cactusli.clottery.infrastructure.dao.IUserStrategyExportDao;
 import cn.cactusli.clottery.infrastructure.dao.IUserTakeActivityCountDao;
 import cn.cactusli.clottery.infrastructure.dao.IUserTakeActivityDao;
+import cn.cactusli.clottery.infrastructure.po.Activity;
 import cn.cactusli.clottery.infrastructure.po.UserStrategyExport;
 import cn.cactusli.clottery.infrastructure.po.UserTakeActivity;
 import cn.cactusli.clottery.infrastructure.po.UserTakeActivityCount;
@@ -40,6 +43,10 @@ public class UserTakeActivityRepository implements IUserTakeActivityRepository {
 
     @Resource
     private IUserStrategyExportDao userStrategyExportDao;
+
+    @Resource
+    private IActivityDao activityDao;
+
 
     @Override
     public int subtractionLeftCount(Long activityId, String activityName, Integer takeCount, Integer userTakeLeftCount, String uId, Date partakeDate) {
@@ -156,6 +163,14 @@ public class UserTakeActivityRepository implements IUserTakeActivityRepository {
             invoiceVOList.add(invoiceVO);
         }
         return invoiceVOList;
+    }
+
+    @Override
+    public void updateActivityStock(ActivityPartakeRecordVO activityPartakeRecordVO) {
+        Activity activity = new Activity();
+        activity.setActivityId(activityPartakeRecordVO.getActivityId());
+        activity.setStockSurplusCount(activityPartakeRecordVO.getStockSurplusCount());
+        activityDao.updateActivityStock(activity);
     }
 
 }

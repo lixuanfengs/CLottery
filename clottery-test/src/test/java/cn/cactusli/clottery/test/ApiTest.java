@@ -1,18 +1,14 @@
 package cn.cactusli.clottery.test;
 
-import cn.cactusli.clottery.infrastructure.dao.IActivityDao;
-import cn.cactusli.clottery.infrastructure.po.Activity;
-import cn.cactusli.clottery.rpc.IActivityBooth;
-import cn.cactusli.clottery.rpc.req.ActivityReq;
-import cn.cactusli.clottery.rpc.res.ActivityRes;
+import cn.cactusli.clottery.rpc.booth.IActivityBooth;
+import cn.cactusli.clottery.rpc.booth.req.ActivityReq;
+import cn.cactusli.clottery.rpc.booth.res.ActivityRes;
 import com.alibaba.fastjson.JSON;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import javax.annotation.Resource;
 
 /**
  * ClassName: ApiTest

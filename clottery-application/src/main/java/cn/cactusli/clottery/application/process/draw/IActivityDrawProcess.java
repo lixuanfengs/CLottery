@@ -1,8 +1,8 @@
-package cn.cactusli.clottery.application.process;
+package cn.cactusli.clottery.application.process.draw;
 
-import cn.cactusli.clottery.application.process.req.DrawProcessReq;
-import cn.cactusli.clottery.application.process.res.DrawProcessResult;
-import cn.cactusli.clottery.application.process.res.RuleQuantificationCrowdResult;
+import cn.cactusli.clottery.application.process.draw.req.DrawProcessReq;
+import cn.cactusli.clottery.application.process.draw.res.DrawProcessResult;
+import cn.cactusli.clottery.application.process.draw.res.RuleQuantificationCrowdResult;
 import cn.cactusli.clottery.domain.rule.model.req.DecisionMatterReq;
 
 /**
@@ -16,7 +16,7 @@ import cn.cactusli.clottery.domain.rule.model.req.DecisionMatterReq;
  * @Version 1.0
  * @Github https://github.com/lixuanfengs
  */
-public interface IActivityProcess {
+public interface IActivityDrawProcess {
 
     /**
      * 执行抽奖流程

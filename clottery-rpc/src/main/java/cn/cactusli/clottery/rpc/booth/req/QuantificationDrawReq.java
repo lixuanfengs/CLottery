@@ -1,4 +1,4 @@
-package cn.cactusli.clottery.rpc.req;
+package cn.cactusli.clottery.rpc.booth.req;
 
 import java.util.Map;
 
